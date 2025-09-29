@@ -3,7 +3,7 @@ package com.arturocastro.apisb.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users_SB")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
