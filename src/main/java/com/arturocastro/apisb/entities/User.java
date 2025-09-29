@@ -3,10 +3,10 @@ package com.arturocastro.apisb.entities;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+@Document(collection = "users")
 public class User {
     @Id
-    private Long id;
+    private String id;
     private String name;
     private String lastName;
     private String email;
@@ -14,16 +14,16 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String name, String lastName, String email) {
+    public User(String id, String name, String lastName, String email) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.email = email;
     }
-    public Long getId() {
+    public String getId() {
         return id;
     }
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
     public String getName() {
