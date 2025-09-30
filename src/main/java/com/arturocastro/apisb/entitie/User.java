@@ -1,4 +1,4 @@
-package com.arturocastro.apisb.entities;
+package com.arturocastro.apisb.entitie;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
