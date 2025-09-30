@@ -16,9 +16,15 @@ public class UserService {
     }
 
     public User save(User user){
-        if (user.getId() != null || verifyExists(user)) {
-            return null;
+        if (user.getId() != null) {
+            throw new IllegalArgumentException("El ID no debe enviarse, Mongo lo genera automáticamente");
         }
+        // Aquí podrías validar por email, por ejemplo
+        if (userRepository.findAll().stream()
+                .anyMatch(u -> u.getEmail().equalsIgnoreCase(user.getEmail()))) {
+            throw new IllegalArgumentException("Ya existe un usuario con ese email");
+        }
+
         return userRepository.save(user);
     }
 

@@ -21,16 +21,16 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<User> createUser(@Valid @RequestBody User user){
-
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        User saved = userService.save(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
 
     @GetMapping
     public ResponseEntity<List<User>> getAll(){
         List<User> list = userService.findAll();
         if(list.isEmpty()){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return ResponseEntity.noContent().build();
         }
-        return ResponseEntity.ok().body(list);
+        return ResponseEntity.ok(list);
     }
 }

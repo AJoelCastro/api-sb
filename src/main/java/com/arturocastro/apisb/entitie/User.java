@@ -1,5 +1,8 @@
 package com.arturocastro.apisb.entitie;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -7,8 +10,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class User {
     @Id
     private String id;
+
+    @NotBlank(message = "El nombre es requerido")
     private String name;
+
+    @NotBlank(message = "El apellido es requerido")
     private String lastName;
+
+    @Email(message = "El email debe tener un formato válido")
+    @NotBlank(message = "El email es requerido")
     private String email;
 
     public User() {
