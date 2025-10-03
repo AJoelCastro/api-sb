@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import com.arturocastro.apisb.entitie.User;
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
