@@ -17,7 +17,7 @@ public class WebSecurity {
                 .authorizeHttpRequests((authz) -> authz
                         .requestMatchers("/api/users/**")
                         .permitAll()
-                        .anyRequest()
+
                 )
                 .httpBasic(withDefaults());
         return http.build();
