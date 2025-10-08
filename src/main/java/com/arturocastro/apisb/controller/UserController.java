@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.arturocastro.apisb.entitie.User;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
@@ -26,8 +27,8 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> getAll(){
-        List<User> list = userService.findAll();
+    public ResponseEntity<Optional<List<User>>> getAll(){
+        Optional<List<User>> list = Optional.ofNullable(userService.findAll());
         if(list.isEmpty()){
             return ResponseEntity.noContent().build();
         }
