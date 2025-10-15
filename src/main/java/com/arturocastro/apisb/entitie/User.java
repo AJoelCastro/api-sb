@@ -24,9 +24,6 @@ public class User {
     @NotBlank(message = "El email es requerido")
     private String email;
 
-    @DBRef
-    private List<Product> favorites;
-
 
     public User() {
     }
