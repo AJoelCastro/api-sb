@@ -68,7 +68,7 @@
         </dependency>
         <dependency>
             <groupId>com.openai</groupId>
-            <artifactId>openai-java</artifactId>
+            <artifactId>openai-java-spring-boot-starter</artifactId>
             <version>4.3.0</version>
         </dependency>
     </dependencies>
