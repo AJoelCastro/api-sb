@@ -19,13 +19,15 @@ public class OpenAIService {
                 .build();
     }
 
-    public Response getQuestion(){
+    public Response getQuestion(String question){
+        if (question==null || question.isEmpty()){
+            return null;
+        }
         ResponseCreateParams responseCreateParams = ResponseCreateParams.builder()
-                .input("What is the capital of Spain?")
+                .input(question)
                 .model(ChatModel.GPT_4_1_NANO)
                 .build();
-        Response response = client.responses().create(responseCreateParams);
-        return response;
+        return client.responses().create(responseCreateParams);
     }
 
 }
