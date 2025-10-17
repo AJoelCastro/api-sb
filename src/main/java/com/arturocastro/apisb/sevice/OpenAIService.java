@@ -2,6 +2,7 @@ package com.arturocastro.apisb.sevice;
 
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.models.ChatModel;
 import com.openai.models.responses.Response;
 import com.openai.models.responses.ResponseCreateParams;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,6 +22,7 @@ public class OpenAIService {
     public Response getQuestion(){
         ResponseCreateParams responseCreateParams = ResponseCreateParams.builder()
                 .input("What is the capital of Spain?")
+                .model(ChatModel.GPT_4_1_NANO)
                 .build();
         Response response = client.responses().create(responseCreateParams);
         return response;

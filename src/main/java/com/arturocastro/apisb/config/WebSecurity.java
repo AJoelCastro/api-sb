@@ -16,7 +16,7 @@ public class WebSecurity {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/api/users/**")
+                        .requestMatchers("/api/users/**", "/api/openai/**")
                         .permitAll()
 
                 )
