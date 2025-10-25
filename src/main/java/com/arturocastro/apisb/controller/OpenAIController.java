@@ -15,7 +15,7 @@ public class OpenAIController {
         this.openAIService = openAIService;
     }
 
-    @PostMapping("/question")
+    @PostMapping("/text-generation")
     public ResponseEntity<Response> getQuestion(@RequestBody String question){
         return ResponseEntity.ok(openAIService.getQuestion(question));
     }
