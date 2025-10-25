@@ -1,5 +1,6 @@
 package com.arturocastro.apisb.sevice;
 
+import com.arturocastro.apisb.dto.TextGenerationRequest;
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 import com.openai.models.ChatModel;
@@ -19,12 +20,13 @@ public class OpenAIService {
                 .build();
     }
 
-    public Response getQuestion(String question){
-        if (question==null || question.isEmpty()){
+    public Response getQuestion(TextGenerationRequest req){
+        if (req==null){
             return null;
         }
-        ResponseCreateParams responseCreateParams = ResponseCreateParams.builder()
-                .input(question)
+        ResponseCreateParams responseCreateParams = ResponseCreateParams
+                .builder()
+                .input(req.getPrompt())
                 .model(ChatModel.GPT_4_1_NANO)
                 .build();
         return client.responses().create(responseCreateParams);

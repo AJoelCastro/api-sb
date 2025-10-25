@@ -1,5 +1,6 @@
 package com.arturocastro.apisb.controller;
 
+import com.arturocastro.apisb.dto.TextGenerationRequest;
 import com.arturocastro.apisb.sevice.OpenAIService;
 import com.openai.models.responses.Response;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +17,8 @@ public class OpenAIController {
     }
 
     @PostMapping("/text-generation")
-    public ResponseEntity<Response> getQuestion(@RequestBody String question){
-        return ResponseEntity.ok(openAIService.getQuestion(question));
+    public ResponseEntity<Response> getQuestion(@RequestBody TextGenerationRequest req){
+        return ResponseEntity.ok(openAIService.getQuestion(req));
     }
 
 }
