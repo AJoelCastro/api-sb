@@ -21,15 +21,47 @@ public class OpenAIService {
     }
 
     public Response getQuestion(TextGenerationRequest req){
-        if (req==null){
-            return null;
+        if (req == null || req.getPrompt() == null || req.getPrompt().isEmpty()) {
+            throw new IllegalArgumentException("Prompt vacío o nulo");
         }
-        ResponseCreateParams responseCreateParams = ResponseCreateParams
+
+        ResponseCreateParams params = ResponseCreateParams
                 .builder()
+                .model(ChatModel.GPT_4_1_MINI)
                 .input(req.getPrompt())
-                .model(ChatModel.GPT_4_1_NANO)
                 .build();
-        return client.responses().create(responseCreateParams);
+        return client.responses().create(params);
+    }
+
+    public Response getStructuredOutput(TextGenerationRequest req){
+        if (req == null || req.getPrompt() == null || req.getPrompt().isEmpty()) {
+            throw new IllegalArgumentException("Prompt vacío o nulo");
+        }
+
+        String prompt = """
+            Eres un asistente experto en cocina.
+            Devuelve una respuesta en formato JSON válido con los pasos y duración estimada.
+
+            Pregunta: %s
+
+            Formato de respuesta:
+            {
+              "question": "<repite la pregunta>",
+              "answer": [
+                {
+                  "content": "Paso 1: ...",
+                  "duration": 0.0
+                }
+              ]
+            }
+            """.formatted(req.getPrompt());
+
+        ResponseCreateParams params = ResponseCreateParams
+                .builder()
+                .model(ChatModel.GPT_4_1_MINI)
+                .input(prompt)
+                .build();
+        return client.responses().create(params);
     }
 
 }
