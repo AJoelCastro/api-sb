@@ -3,20 +3,40 @@ package com.arturocastro.apisb.dto;
 public class TextGenerationRequest {
 
     private String prompt;
-    private int maxTokens;
-    private String role;
-    private String instruction;
+    private String model;
+    private Double temperature;
+    private Long maxTokens;
 
-    // ✅ Getters y setters (necesarios para @RequestBody)
+    public TextGenerationRequest() {
+    }
     public String getPrompt() { return prompt; }
     public void setPrompt(String prompt) { this.prompt = prompt; }
 
-    public int getMaxTokens() { return maxTokens; }
-    public void setMaxTokens(int maxTokens) { this.maxTokens = maxTokens; }
+    public Long getMaxTokens() { return maxTokens; }
+    public void setMaxTokens(Long maxTokens) { this.maxTokens = maxTokens; }
 
-    public String getRole() { return role; }
-    public void setRole(String role) { this.role = role; }
+    public String getModel() {
+        return model;
+    }
 
-    public String getInstruction() { return instruction; }
-    public void setInstruction(String instruction) { this.instruction = instruction; }
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public Double getTemperature() {
+        return temperature;
+    }
+
+    public void setTemperature(Double temperature) {
+        this.temperature = temperature;
+    }
+    @Override
+    public String toString() {
+        return "TextGenerationRequest{" +
+                "prompt='" + prompt + '\'' +
+                ", model='" + model + '\'' +
+                ", temperature=" + temperature +
+                ", maxTokens=" + maxTokens +
+                '}';
+    }
 }

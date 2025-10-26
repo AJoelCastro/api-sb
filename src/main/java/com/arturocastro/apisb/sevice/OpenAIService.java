@@ -28,6 +28,8 @@ public class OpenAIService {
         ResponseCreateParams params = ResponseCreateParams
                 .builder()
                 .model(ChatModel.GPT_4_1_MINI)
+                .temperature(req.getTemperature())
+                .maxOutputTokens(req.getMaxTokens())
                 .input(req.getPrompt())
                 .build();
         return client.responses().create(params);
